@@ -1,0 +1,41 @@
+Type 0 to refresh characteristic values.
+Type the ID of a characteristic to write.
+Type the ID of a characteristic (UPPERCASE) to toggle notifications on/off.
+BTstack up and running on 2C:CF:67:F2:DE:04.
+Connecting to device with addr 2C:CF:67:F2:DE:9A.
+Discovered characteristics:
+
+Characteristic ID.:	 a
+User description:	 Read-only Counter
+Access permissions:	 | Read | Notify  |
+Notify:			 OFF
+Value:			 6
+
+Characteristic ID.:	 b
+User description:	 DDS Frequency
+Access permissions:	 | Read | Write without response | Notify  |
+Notify:			 OFF
+Value:			 400.000000
+
+Characteristic ID.:	 c
+User description:	 String from Pico
+Access permissions:	 | Read | Notify  |
+Notify:			 OFF
+Value:			 
+
+Characteristic ID.:	 d
+User description:	 String to Pico
+Access permissions:	 | Read | Write without response | Notify  |
+Notify:			 OFF
+Value:			 
+
+Characteristic ID.:	 e
+User description:	 LED Status and Control
+Access permissions:	 | Read | Write without response  |
+Value:			 OFF
+
+Characteristic ID.:	 f
+User description:	 Color Selection
+Access permissions:	 | Read | Write without response  |
+Value:			 15
+
