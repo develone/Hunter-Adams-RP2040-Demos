@@ -1,0 +1,69 @@
+10/10/26
+
+devel@pi5-80:~ $ git clone -b test-dev https://github.com/develone/Hunter-Adams-RP2040-Demos.git
+
+devel@pi5-80:~ $ cd Hunter-Adams-RP2040-Demos/Bluetooth/
+
+devel@pi5-80:~/Hunter-Adams-RP2040-Demos/Bluetooth $ cp -R GATT_Server/ ~/pio/pico2/pico-examples/
+
+devel@pi5-80:~/Hunter-Adams-RP2040-Demos/Bluetooth $ cp -R GATT_Client/ ~/pio/pico2/pico-examples/
+
+devel@pi5-70:~/master-repos/Hunter-Adams-RP2040-Demos $ git diff Bluetooth/GATT_Client/CMakeLists.txt
+diff --git a/Bluetooth/GATT_Client/CMakeLists.txt b/Bluetooth/GATT_Client/CMakeLists.txt
+index e95a55a..f9441fd 100644
+--- a/Bluetooth/GATT_Client/CMakeLists.txt
++++ b/Bluetooth/GATT_Client/CMakeLists.txt
+@@ -1,10 +1,10 @@
+-set(PICO_BOARD pico_w CACHE STRING "Board type")
++set(PICO_BOARD pico2_w CACHE STRING "Board type")
+ 
+ # cmake version
+ cmake_minimum_required(VERSION 3.13)
+ 
+ # include the sdk.cmake file
+-include(pico_sdk_import.cmake)
++#include(pico_sdk_import.cmake)
+ 
+ # give the project a name (anything you want)
+ project(GATT_Client C CXX ASM)
+@@ -34,4 +34,4 @@ target_compile_definitions(GATT_Client PRIVATE
+     RUNNING_AS_CLIENT=1
+ )
+ 
+-pico_add_extra_outputs(GATT_Client)
+\ No newline at end of file
++pico_add_extra_outputs(GATT_Client)
+
+devel@pi5-70:~/master-repos/Hunter-Adams-RP2040-Demos $ git diff Bluetooth/GATT_Server/CMakeLists.txt
+diff --git a/Bluetooth/GATT_Server/CMakeLists.txt b/Bluetooth/GATT_Server/CMakeLists.txt
+index 34971b9..d0834da 100644
+--- a/Bluetooth/GATT_Server/CMakeLists.txt
++++ b/Bluetooth/GATT_Server/CMakeLists.txt
+@@ -1,10 +1,10 @@
+-set(PICO_BOARD pico_w CACHE STRING "Board type")
++set(PICO_BOARD pico2_w CACHE STRING "Board type")
+ 
+ # cmake version
+ cmake_minimum_required(VERSION 3.13)
+ 
+ # include the sdk.cmake file
+-include(pico_sdk_import.cmake)
++#include(pico_sdk_import.cmake)
+ 
+ # give the project a name (anything you want)
+ project(GATT_Server C CXX ASM)
+ 
+devel@pi5-80:~/pio/pico2/pico-examples $ ./compile-rp2350.sh
+
+
+devel@pi5-70:~/master-repos/Hunter-Adams-RP2040-Demos $ git diff doc/CMakeLists.txt
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index 29801c2..3a2ad35 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -106,3 +106,5 @@ add_subdirectory(klt-test)
+ add_subdirectory(openjpeg)
+ add_subdirectory(xmodem)
+ add_subdirectory(freertos)
++add_subdirectory(GATT_Client)
++add_subdirectory(GATT_Server)
