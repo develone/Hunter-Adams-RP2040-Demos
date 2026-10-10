@@ -1,10 +1,10 @@
-set(PICO_BOARD pico_w CACHE STRING "Board type")
+set(PICO_BOARD pico2_w CACHE STRING "Board type")
 
 # cmake version
 cmake_minimum_required(VERSION 3.13)
 
 # include the sdk.cmake file
-include(pico_sdk_import.cmake)
+#include(pico_sdk_import.cmake)
 
 # give the project a name (anything you want)
 project(GATT_Server C CXX ASM)
