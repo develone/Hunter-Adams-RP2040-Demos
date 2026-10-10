@@ -1,4 +1,10 @@
-10/10/26
+10/10/2
+
+devel@pi5-80:~ $ cd pio/pico2/
+ 
+devel@pi5-80:~/pio/pico2 $ git clone -b test-dev https://github.com/develone/pico-examples.git
+
+devel@pi5-80:~/pio/pico2 $ cd ~/
 
 devel@pi5-80:~ $ git clone -b test-dev https://github.com/develone/Hunter-Adams-RP2040-Demos.git
 
@@ -7,6 +13,44 @@ devel@pi5-80:~ $ cd Hunter-Adams-RP2040-Demos/Bluetooth/
 devel@pi5-80:~/Hunter-Adams-RP2040-Demos/Bluetooth $ cp -R GATT_Server/ ~/pio/pico2/pico-examples/
 
 devel@pi5-80:~/Hunter-Adams-RP2040-Demos/Bluetooth $ cp -R GATT_Client/ ~/pio/pico2/pico-examples/
+
+devel@pi5-90:~/Hunter-Adams-RP2040-Demos/Bluetooth $ cd ../
+
+devel@pi5-90:~/Hunter-Adams-RP2040-Demos $ cp doc/CMakeLists.txt ~/pio/pico2/pico-examples/
+
+devel@pi5-90:~/pio/pico2/pico-examples $ ./compile-rp2350.sh
+
+devel@pi5-90:~/pio/pico2/pico-examples $ cd build-rp2350/GATT_Server/
+
+devel@pi5-90:~/pio/pico2/pico-examples/build-rp2350/GATT_Server $ make
+
+devel@pi5-90:~/pio/pico2/pico-examples/build-rp2350/GATT_Server $ scp GATT_Server.uf2 pi5-80:/media/devel/RP2350/
+GATT_Server.uf2                               100%  793KB   1.2MB/s   00:00
+
+devel@pi5-90:~/pio/pico2/pico-examples/build-rp2350/GATT_Server $ cd ../GATT_Client/
+
+devel@pi5-90:~/pio/pico2/pico-examples/build-rp2350/GATT_Client $ make
+
+devel@pi5-90:~/pio/pico2/pico-examples/build-rp2350/GATT_Client $ ls
+CMakeFiles           GATT_Client.dis      GATT_Client.hex  pico-sdk
+cmake_install.cmake  GATT_Client.elf      GATT_Client.uf2
+GATT_Client.bin      GATT_Client.elf.map  Makefile
+
+devel@pi5-90:~/pio/pico2/pico-examples/build-rp2350/GATT_Client $ scp GATT_Client.uf2 pi5-80:/media/devel/RP2350/
+
+
+
+devel@pi5-90:~/pio/pico2/pico-examples/build-rp2350/GATT_Server $ ls
+CMakeFiles           GATT_Server.elf      generated    rgb.pio.h
+cmake_install.cmake  GATT_Server.elf.map  hsync.pio.h  vsync.pio.h
+GATT_Server.bin      GATT_Server.hex      Makefile
+GATT_Server.dis      GATT_Server.uf2      pico-sdk
+
+
+
+
+devel@pi5-90:~/Hunter-Adams-RP2040-Demos $ cd ~/pio/pico2/pico-examples/
+
 
 devel@pi5-70:~/master-repos/Hunter-Adams-RP2040-Demos $ git diff Bluetooth/GATT_Client/CMakeLists.txt
 diff --git a/Bluetooth/GATT_Client/CMakeLists.txt b/Bluetooth/GATT_Client/CMakeLists.txt
