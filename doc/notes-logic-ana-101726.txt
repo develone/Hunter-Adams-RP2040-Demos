@@ -1,0 +1,51 @@
+10/17/26
+
+devel@pi5-90:~ $ minicom myACM0
+Ctrl-L
+					Capture to which file?                   |
+					> vga-1.txt
+p14
+Start pin is 14
+n5
+Total pins is 5
+s250000
+Sample number is 250000
+f1000000
+Frequency is 1000000 div is 125.000000
+t1
+Trigger set to 1
+g
+
+Ctrl-L
+
+devel@pi5-90:~ $ scp vga-1.txt pi5-70:/home/devel/pillow-testing/
+vga-1.txt                                     100% 2686KB   5.2MB/s   00:00
+
+devel@pi5-70:~/pillow-testing $ . ./virtp.sh 
+(env) devel@pi5-70:~/pillow-testing $
+
+(env) devel@pi5-70:~/pillow-testing $ cp vga-1.txt dvi-1.csv
+
+(env) devel@pi5-70:~/pillow-testing $ ./fix > test.csv
+
+3,$ s/^ 0/,0/g
+
+sed '/^$/d' filename.txt
+
+(env) devel@pi5-70:~/pillow-testing $ sed '/^$/d' test.csv
+
+(env) devel@pi5-70:~/pillow-testing $ cp test.csv simulation.csv
+
+(env) devel@pi5-70:~/pillow-testing $ python3 csv2vcd.py 
+Successfully converted simulation.csv to output.vcd!
+
+(env) devel@pi5-70:~/pillow-testing $ gtkwave output.vcd
+
+(env) devel@pi5-70:~/pillow-testing $ sed '/^$/d' simulation.csv > simulation.csv
+
+
+(env) devel@pi5-70:~/pillow-testing $ libreoffice simulation.csv &
+
+(env) devel@pi5-70:~/pillow-testing $ python3 csv2vcd.py
+
+(env) devel@pi5-70:~/pillow-testing $ gtkwave output.vcd
